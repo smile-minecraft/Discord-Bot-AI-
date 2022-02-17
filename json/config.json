@@ -1,0 +1,10 @@
+{
+    "token": "ODc2NDg0MzgxODIzMzY5MjE2.YRkvsA.hbvLsl_qZejmsAoCqUbxWhaH9Ic",
+    "clientId":"876484381823369216",
+    "guildId":"867315843519610890",
+    "help" : "\n/hi 讓機器人打招呼\n/server 查看伺服器相關狀態\n/user 查看自己的個人資訊\n\n**機器人相關**\n/ping 機器人的ping值\n/ver 機器人的版本",
+    "ver":"v1.4.3",
+    "randommessage":"",
+    "APIkey":"i23bx6mRwVcokTehBgCqAW6vDlipFK",
+    "test array":["","","","",""]
+}
