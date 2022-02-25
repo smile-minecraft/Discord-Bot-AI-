@@ -16,7 +16,7 @@ for (const file of commandFiles) {
 //#endregion
 
 //#region 自定義函數
-const ver = "**V1.3.0 - MBC專用版**"//版本號
+const ver = require("./json/config.json")//版本號
 //#endregion
 
 //#region 啟動指令
@@ -76,7 +76,7 @@ axios
         }).catch(err => {
             APIhost = "http://220.134.162.44:10150/"
         })
-    
+
     });
 //#endregion
 
@@ -89,20 +89,19 @@ axios
                     .setTitle('無法使用')
                     .setDescription('機器人不允許DM訊息使用指令')
                     .setThumbnail('https://i.imgur.com/jU1VGC2.png')
-                    
+
             ],
         });
             const command = client.commands.get(interaction.commandName);
 
             if (!command) return;
-        
+
             try {
                 await command.execute(interaction);
             } catch (error) {
                 console.error(error);
                 await interaction.channel.send({ content: '執行指令時發現錯誤:/', ephemeral: true });
             }
-        
+
     });
 //#endregion
-
