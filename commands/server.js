@@ -18,7 +18,7 @@ module.exports = {
                 const embed1 = new MessageEmbed()
                 .setColor('#45F7CB')
                 .setTitle('合作社-伺服器狀態')
-                .setDescription('伺服器有狀況記得回到管理員喔~')
+                .setDescription('伺服器有狀況記得回報管理員喔~')
                 .addFields(
                     { name: '伺服器在線人數', value: `${players}/${maxplayers}` },
                     { name: '\u200B', value: '\u200B' },
