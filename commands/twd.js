@@ -8,7 +8,6 @@ module.exports = {
 	async execute(interaction) {
     await axios.get("https://tw.rter.info/capi.php")
             .then(res => {
-                console.log(res.data)
                 var usd = Math.round(res.data["USDTWD"]["Exrate"]* 100) / 100
                 var jp = Math.round(usd/res.data["USDJPY"]["Exrate"]* 100) / 100
                 var kor = Math.round(usd/res.data["USDKRW"]["Exrate"]* 100) / 100
