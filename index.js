@@ -15,8 +15,17 @@ for (const file of commandFiles) {
 }
 //#endregion
 
-//#region 自定義函數
-const ver = require("./json/config.json")//版本號
+//#region 單獨讀取事件文件
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
 //#endregion
 
 //#region 啟動指令
