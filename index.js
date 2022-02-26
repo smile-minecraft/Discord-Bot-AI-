@@ -1,7 +1,7 @@
 const { Client, Intents, SelectMenuInteraction,Collection } = require('discord.js');
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 const { MessageEmbed } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });//這裡定義監聽器的基本功能
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_MEMBERS] });//這裡定義監聽器的基本功能
 const { token, guildId } = require('./json/config.json');
 const { help } = require('./json/config.json');
 const fs = require('fs');

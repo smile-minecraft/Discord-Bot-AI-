@@ -9,12 +9,12 @@ module.exports = {
     await axios.get("https://tw.rter.info/capi.php")
             .then(res => {
                 console.log(res.data)
-                var usd = res.data["USDTWD"]["Exrate"]
-                var jp = usd/res.data["USDJPY"]["Exrate"]
-                var kor = usd/res.data["USDKRW"]["Exrate"]
-                var sing = usd/res.data["USDSGD"]["Exrate"]
-                var malay = usd/res.data["USDMYR"]["Exrate"]
-                var china = usd/res.data["USDCNY"]["Exrate"]
+                var usd = Math.round(res.data["USDTWD"]["Exrate"]* 100) / 100
+                var jp = Math.round(usd/res.data["USDJPY"]["Exrate"]* 100) / 100
+                var kor = Math.round(usd/res.data["USDKRW"]["Exrate"]* 100) / 100
+                var sing = Math.round(usd/res.data["USDSGD"]["Exrate"]* 100) / 100
+                var malay = Math.round(usd/res.data["USDMYR"]["Exrate"]* 100) / 100
+                var china = Math.round(usd/res.data["USDCNY"]["Exrate"]* 100) / 100
                 var text = `美金:${usd}:1\n日幣:${jp}:1\n韓元:${kor}:1\n新加坡幣:${sing}:1\n馬幣:${malay}:1\n人民幣:${china}:1`
 
                 const embed = new MessageEmbed()

@@ -24,8 +24,7 @@ module.exports = {
                     { name: '\u200B', value: '\u200B' },
                     { name: '伺服器連線位址', value: `網址:mbc.fnwl.tk\n基岩版連接埠:${port}`, inline: true },
                     { name: '\u200B', value: '\u200B' },
-                    { name: '版本號', value: `${ver}`, inline: true },
-                    { name: '延遲', value: `${protocol}`, inline: true }
+                    { name: '版本號', value: `${ver}`, inline: true }
                 )
                 .setThumbnail("https://i.imgur.com/0Hti98o.png")
                 .setTimestamp()
