@@ -4,7 +4,7 @@
     "guildId":"",
     "help" : "\n/hi 讓機器人打招呼\n/server 查看伺服器相關狀態\n/user 查看自己的個人資訊\n\n**機器人相關**\n/ping 機器人的ping值\n/ver 機器人的版本",
     "ver":"1.4.3",
-    "randommessage":"",
+    "badwords":["操你","機掰","死白癡","幹你"],
     "APIkey":"",
     "test array":["","","","",""]
 }
