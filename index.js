@@ -57,7 +57,7 @@ client.on('guildMemberAdd',async member =>{
                 { name: '\u200B', value: '\u200B' },
                 { name: '🔸伺服器IP', value: "mbc.fnwl.tk:25600" }
             )
-            .setThumbnail(member.user.avatarURL())
+            .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp()
         channel.send({embeds:[embed]});
         member.roles.add('879556011818639412');
@@ -73,7 +73,7 @@ client.on('guildMemberRemove',async member =>{
             .setColor('#FF0000')
             .setTitle(`${member.user.username}離開了合作社.w.`)
             .setDescription('祝他心想事成')
-            .setThumbnail(member.user.avatarURL())
+            .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp()
         channel.send({embeds:[embed]});
     }catch(e){
