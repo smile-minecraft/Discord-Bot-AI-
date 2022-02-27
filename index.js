@@ -51,13 +51,13 @@ client.on('guildMemberAdd',async member =>{
     const channel = await client.channels.fetch("879559382906581052");
         const embed  = new MessageEmbed()
             .setColor('#7CFC00')
-            .setTitle(`${member.displayname}來到了合作社.w.`)
+            .setTitle(`${member.user.username}來到了合作社.w.`)
             .setDescription('歡迎加入，請記得詳讀規則和其他說明')
             .addFields(
                 { name: '\u200B', value: '\u200B' },
                 { name: '🔸伺服器IP', value: "mbc.fnwl.tk:25600" }
             )
-            .setThumbnail(member.user.avatar)
+            .setThumbnail(member.user.avatarURL())
             .setTimestamp()
         channel.send({embeds:[embed]});
         member.roles.add('879556011818639412');
@@ -73,7 +73,7 @@ client.on('guildMemberRemove',async member =>{
             .setColor('#FF0000')
             .setTitle(`${member.user.username}離開了合作社.w.`)
             .setDescription('祝他心想事成')
-            .setThumbnail(member.user.avatar)
+            .setThumbnail(member.user.avatarURL())
             .setTimestamp()
         channel.send({embeds:[embed]});
     }catch(e){
