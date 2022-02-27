@@ -16,6 +16,6 @@ module.exports = {
             .setThumbnail(member.avatar)
             .setTimestamp()
         channel.send({embeds:[embed]});
-        member.roles.add('879556011818639412')
+        member.roles.add('879556011818639412');
 	},
 };
