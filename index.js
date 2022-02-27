@@ -65,10 +65,10 @@ client.on('guildMemberAdd',async member =>{
                 console.error(e);
             }
 })
-client.on('guildMemberRemove',async member =>{
+client.on('guildMemberRemove', member =>{
     console.log("偵測到有人離開伺服器:v"+member.user.username);
     try{
-    const channel = await client.channels.fetch("879630102642692096");
+    const channel = client.channels.fetch("879630102642692096");
         const embed  = new MessageEmbed()
             .setColor('#FF0000')
             .setTitle(`${member.user.username}離開了合作社.w.`)
