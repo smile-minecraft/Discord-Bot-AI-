@@ -46,7 +46,7 @@ client.on('interactionCreate', async interaction => {
 //#endregion
 
 client.on('guildMemberAdd',async member =>{
-    console.log("偵測到有人加入伺服器:v"+member.displayName);
+    console.log("偵測到有人加入伺服器:v"+member.user.username);
     try{
     const channel = await client.channels.fetch("879559382906581052");
         const embed  = new MessageEmbed()
@@ -54,10 +54,10 @@ client.on('guildMemberAdd',async member =>{
             .setTitle(`${member.displayname}來到了合作社.w.`)
             .setDescription('歡迎加入，請記得詳讀規則和其他說明')
             .addFields(
-                { name: '🔸伺服器IP', value: "mbc.fnwl.tk:25600" },
-                { name: '\u200B', value: '\u200B' }
+                { name: '\u200B', value: '\u200B' },
+                { name: '🔸伺服器IP', value: "mbc.fnwl.tk:25600" }
             )
-            .setThumbnail(member.avatar)
+            .setThumbnail(member.user.avatar)
             .setTimestamp()
         channel.send({embeds:[embed]});
         member.roles.add('879556011818639412');
@@ -66,14 +66,14 @@ client.on('guildMemberAdd',async member =>{
             }
 })
 client.on('guildMemberRemove',async member =>{
-    console.log("偵測到有人離開伺服器:v"+member.displayName);
+    console.log("偵測到有人離開伺服器:v"+member.user.username);
     try{
     const channel = await client.channels.fetch("879630102642692096");
         const embed  = new MessageEmbed()
             .setColor('#FF0000')
-            .setTitle(`${member.displayname}離開了合作社.w.`)
+            .setTitle(`${member.user.username}離開了合作社.w.`)
             .setDescription('祝他心想事成')
-            .setThumbnail(member.avatar)
+            .setThumbnail(member.user.avatar)
             .setTimestamp()
         channel.send({embeds:[embed]});
     }catch(e){
