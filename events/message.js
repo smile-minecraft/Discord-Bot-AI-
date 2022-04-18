@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'messageCreate',
 	once: false,
-	execute(message) {
+	execute(client,message) {
         console.log("偵測到一則訊息:" + message.content);
         const badwords = require("../json/config.json");
         for(let i=0;i<badwords.length;i++){
