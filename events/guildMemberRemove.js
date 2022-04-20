@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'guildMemberRemove',
 	once: false,
-	execute(client,message) {
+	execute(client,member) {
         console.log("偵測到有人離開伺服器:v"+member.user.username);
     try{
     const channel = client.channels.fetch("879630102642692096");

@@ -6,9 +6,10 @@ module.exports = {
 		.setName('covid')
 		.setDescription('台灣疫情資料'),
 	async execute(interaction) {
+        
         axios.get("https://covid-19.nchc.org.tw/api/covid19?CK=covid-19@nchc.org.tw&querydata=4001&limited=TWN")
             .then(res => {//這一段是機器人接收回復
-                console.log(res.data);
+                
                 let number = res.data[0]["a05"];
                 let date = res.data[0]["a04"];
                 let add = res.data[0]["a06"];
