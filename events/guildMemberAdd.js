@@ -5,7 +5,8 @@ module.exports = {
 	execute(client,member) {
         console.log("偵測到有人加入伺服器:v"+member.user.username);
     try{
-    const channel = client.channels.fetch("879559382906581052");
+    member.roles.add('879556011818639412');
+    
         const embed  = new MessageEmbed()
             .setColor('#7CFC00')
             .setTitle(`${member.user.username}來到了合作社.w.`)
@@ -16,8 +17,8 @@ module.exports = {
             )
             .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp()
-        channel.send({embeds:[embed]});
-        member.roles.add('879556011818639412');
+            client.guilds.cache.get("867315843519610890").channels.cache.get("879559382906581052").send({embeds:[embed]});
+        
             }catch(e){
                 console.error(e);
             }
