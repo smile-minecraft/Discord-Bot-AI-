@@ -5,7 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('server')
 		.setDescription('伺服器狀態'),
-	async execute(interaction) {
+	async execute(client,interaction) {
         axios.get("https://api.mcsrvstat.us/2/mbc.fnwl.tk")
             .then(res => {//這一段是機器人接收回復
                 var players = res.data["players"]["online"];

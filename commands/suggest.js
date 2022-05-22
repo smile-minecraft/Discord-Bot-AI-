@@ -20,7 +20,7 @@ module.exports = {
             option.setName('內容')
                 .setDescription('建議的內容')
                 .setRequired(true)),
-	async execute(interaction) {
+	async execute(client,interaction) {
         const type = interaction.options.getString('種類');
         const suggest = interaction.options.getString('標題');
         const content = interaction.options.getString('內容');
@@ -36,5 +36,8 @@ module.exports = {
         await message.react('🟢');
         await message.react('🔴');
         interaction.reply('已經發送到伺服器建議頻道了');
-	},
+        setTimeout(() => {
+            interaction.deleteReply();
+	},10000);
+    },
 };

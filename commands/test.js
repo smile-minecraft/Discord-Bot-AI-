@@ -9,7 +9,7 @@ module.exports = {
             option.setName('input')
                 .setDescription('The input to echo back')
                 .setRequired(true)),
-	async execute(interaction) {
+	async execute(client,interaction) {
         let USER = JSON.parse(fs.readFile('user.json'),function (err, data) {
             if (err) throw err
           });

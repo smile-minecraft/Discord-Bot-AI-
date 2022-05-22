@@ -5,7 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('twd')
 		.setDescription('新台幣即時匯率'),
-	async execute(interaction) {
+	async execute(client,interaction) {
     await axios.get("https://tw.rter.info/capi.php")
             .then(res => {
                 var usd = Math.round(res.data["USDTWD"]["Exrate"]* 100) / 100

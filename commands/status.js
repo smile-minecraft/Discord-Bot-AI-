@@ -6,8 +6,8 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('status')
 		.setDescription('顯示資料庫、機器人的連接狀態'),
-	async execute(interaction) {
-        let times = time(interaction.client.readyTimestamp/1000 >> 0);
+	async execute(client,interaction) {
+        let times = time(client.readyTimestamp/1000 >> 0);
         const embed = new MessageEmbed()
         .setColor('#00FFFF')
         .setTitle('機器人連線狀態')

@@ -5,7 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('covid')
 		.setDescription('台灣疫情資料'),
-	async execute(interaction) {
+	async execute(client,interaction) {
         
         axios.get("https://covid-19.nchc.org.tw/api/covid19?CK=covid-19@nchc.org.tw&querydata=4001&limited=TWN")
             .then(res => {//這一段是機器人接收回復

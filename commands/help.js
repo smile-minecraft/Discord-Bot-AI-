@@ -5,7 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
 		.setDescription('指令的列表以及操作幫助'),
-	async execute(interaction) {
+	async execute(client,interaction) {
         const embed = new MessageEmbed()
         .setColor('#00FFFF')
         .setTitle('機器人幫助頁面')
