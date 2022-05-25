@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const { connection } = require('mongoose');
 const { time } = require('@discordjs/builders');
+const { color } = require('../json/util.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('status')
@@ -9,7 +10,7 @@ module.exports = {
 	async execute(client,interaction) {
         let times = time(client.readyTimestamp/1000 >> 0);
         const embed = new MessageEmbed()
-        .setColor('#00FFFF')
+        .setColor(color.yellow)
         .setTitle('機器人連線狀態')
         .setDescription(`**延遲:**${Date.now() - interaction.createdTimestamp} ms\n**資料庫連線狀態:** ${switchTo(connection.readyState)}\n
         **開啟時間:** ${times}`)

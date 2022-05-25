@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const { default: axios } = require('axios');
+const { color } = require('../json/util.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('twd')
@@ -17,7 +18,7 @@ module.exports = {
                 var text = `美金:${usd}:1\n日幣:${jp}:1\n韓元:${kor}:1\n新加坡幣:${sing}:1\n馬幣:${malay}:1\n人民幣:${china}:1`
 
                 const embed = new MessageEmbed()
-                .setColor('#00FFFF')
+                .setColor(color.gold)
                 .setTitle('即時匯率轉換')
                 .setDescription("可以查詢台幣匯率.w.")
                 .addFields(

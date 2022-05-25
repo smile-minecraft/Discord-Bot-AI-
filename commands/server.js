@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { default: axios } = require('axios');
 const { MessageEmbed } = require('discord.js');
+const { color } = require('../json/util.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('server')
@@ -17,7 +18,7 @@ module.exports = {
                 var protocol = res.data["protacol"]
                 var online = res.data["online"]
                 const embed1 = new MessageEmbed()
-                .setColor('#45F7CB')
+                .setColor(color.green)
                 .setTitle('合作社-伺服器狀態')
                 .setDescription('伺服器有狀況記得回報管理員喔~')
                 .addFields(
@@ -31,7 +32,7 @@ module.exports = {
                 .setTimestamp()
 
                 const embed2 = new MessageEmbed()
-                .setColor('#45F7CB')
+                .setColor(color.red)
                 .setTitle('合作社-伺服器狀態-離線')
                 .setDescription('伺服器有狀況記得回到管理員喔~')
                 .setThumbnail("https://i.imgur.com/azwL1JE.png")

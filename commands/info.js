@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
+const { color } = require('../json/util.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('info')
@@ -9,7 +10,7 @@ module.exports = {
         var membercount = interaction.guild.memberCount;
         var mancount =  membercount - botcount;
         const embed = new MessageEmbed()
-            .setColor('#45F7CB')
+            .setColor(color.pink)
             .setTitle('伺服器相關資訊')
             .setDescription('伺服器名稱:'+ interaction.guild.name + "\n伺服器實際人數:"+ mancount)
             .setThumbnail(interaction.guild.iconURL())

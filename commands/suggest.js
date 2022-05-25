@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
-const { help } = require("../json/config.json")
+const { help } = require("../json/config.json");
+const { color } = require('../json/util.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('suggest')
@@ -25,8 +26,8 @@ module.exports = {
         const suggest = interaction.options.getString('標題');
         const content = interaction.options.getString('內容');
         const embed = new MessageEmbed()
-        .setColor('#FFD306')
-        .setTitle(`${interaction.member.username}提出了${type}`)
+        .setColor(color.lightyellow)
+        .setTitle(`${interaction.member.displayName}提出了${type}`)
         .addField('標題', `${suggest}`, true)
         .addField('內容', `${content}`, true)
         .setDescription(`真是很棒的建議呢`)

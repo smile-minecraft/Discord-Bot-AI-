@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed, User } = require('discord.js');
+const { color } = require('../json/util.json');
 const fs = require('fs')
 const { time } = require('@discordjs/builders');
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
 		let times = time(user.joinedTimestamp);
 
 	const userProfile = new MessageEmbed()
-		.setColor('#ffd700')
+		.setColor(color.blue)
 		.setTitle(`用戶${targetname}的自我介紹`)
 		.addField('資訊',`**用戶名稱**:${targetname}`)
 		.addField("ID",`${targetid}`)

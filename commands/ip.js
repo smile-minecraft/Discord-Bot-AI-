@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { default: axios } = require('axios');
 const { MessageEmbed } = require('discord.js');
-const { countryCode , isp } = require('../json/util.json')
+const { countryCode , isp , color } = require('../json/util.json')
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ip')
@@ -32,7 +32,7 @@ module.exports = {
 
 
                 const embed1 = new MessageEmbed()
-                .setColor('#45F7CB')
+                .setColor(color.purple)
                 .setTitle('IP查詢')
                 .setDescription('阿姨到你家去查水表了喔~')
                 .addFields(
