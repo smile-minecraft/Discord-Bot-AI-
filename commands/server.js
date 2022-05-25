@@ -6,6 +6,7 @@ module.exports = {
 		.setName('server')
 		.setDescription('伺服器狀態'),
 	async execute(client,interaction) {
+        await interaction.deferReply();
         axios.get("https://api.mcsrvstat.us/2/mbc.fnwl.tk")
             .then(res => {//這一段是機器人接收回復
                 var players = res.data["players"]["online"];
@@ -36,10 +37,10 @@ module.exports = {
                 .setThumbnail("https://i.imgur.com/azwL1JE.png")
                 .setTimestamp()
             if(online){
-                interaction.reply({embeds:[embed1]})
+                interaction.editReply({embeds:[embed1]})
             }
             else{
-                interaction.reply({embeds:[embed2]})
+                interaction.editReply({embeds:[embed2]})
             }
             })
 	},

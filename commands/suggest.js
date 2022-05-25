@@ -26,7 +26,7 @@ module.exports = {
         const content = interaction.options.getString('內容');
         const embed = new MessageEmbed()
         .setColor('#FFD306')
-        .setTitle(`${interaction.member.nickname}提出了${type}`)
+        .setTitle(`${interaction.member.username}提出了${type}`)
         .addField('標題', `${suggest}`, true)
         .addField('內容', `${content}`, true)
         .setDescription(`真是很棒的建議呢`)

@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const { guildId,GoodByeChannel} = require('../json/config.json');
 module.exports = {
 	name: 'guildMemberRemove',
 	once: false,
@@ -11,7 +12,7 @@ module.exports = {
             .setDescription('祝他心想事成')
             .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp()
-            client.guilds.cache.get("867315843519610890").channels.cache.get("879630102642692096").send({embeds:[embed]});
+            client.guilds.cache.get(guildId).channels.cache.get(GoodByeChannel).send({embeds:[embed]});
     }catch(e){
         console.error(e);
     }

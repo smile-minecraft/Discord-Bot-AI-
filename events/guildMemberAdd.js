@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const { WelcomeChannel,guildId } = require("../json/config.json");
 module.exports = {
 	name: 'guildMemberAdd',
 	once: false,
@@ -17,7 +18,7 @@ module.exports = {
             )
             .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp()
-            client.guilds.cache.get("867315843519610890").channels.cache.get("879559382906581052").send({embeds:[embed]});
+            client.guilds.cache.get(guildId).channels.cache.get(WelcomeChannel).send({embeds:[embed]});
         
             }catch(e){
                 console.error(e);

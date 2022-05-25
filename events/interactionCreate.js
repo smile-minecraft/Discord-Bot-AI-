@@ -2,7 +2,7 @@ module.exports = {
 	name: 'interactionCreate',
 	once: false,
 	async execute(client,interaction) {
-		if (!interaction.isCommand()) return;
+		if (interaction.isCommand()) {
 
 	const command = client.commands.get(interaction.commandName);
 	if (!command) return;
@@ -13,5 +13,6 @@ module.exports = {
 		console.error(error);
 		await interaction.reply({ content: '執行指令發生錯誤:/', ephemeral: true });
 	}
+}
 	},
 };
