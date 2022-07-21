@@ -1,12 +1,7 @@
 {
-    "token": "",
-    "clientId":"",
-    "guildId":"",
-    "WelcomeChannel":"",
-    "GoodByeChannel":"",
-    "SuggestChannel":"",
+    "WelcomeChannel":"879559382906581052",
+    "GoodByeChannel":"879630102642692096",
+    "SuggestChannel":"911841280940703785",
     "help" : "\n/hi 讓機器人打招呼\n/server 查看伺服器相關狀態\n/user 查看自己的個人資訊\n\n**機器人相關**\n/ping 機器人的ping值\n/ver 機器人的版本",
-    "ver":"1.2.0",
-    "database":"",
-    "badwords":["操你","機掰","死白癡","幹你"]
+    "ver":"1.2.0"
 }

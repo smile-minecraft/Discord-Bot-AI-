@@ -1,0 +1,27 @@
+{
+  "name": "discord",
+  "version": "1.0.0",
+  "description": "---\r 在合作社伺服器擔任輔助機器人的角色\r ## 具體功能\r ---\r 偵測訊息\r 加入/離開消息\r Minecraft server API 查詢",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smile-minecraft/Discord-Bot-AI-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smile-minecraft/Discord-Bot-AI-/issues"
+  },
+  "homepage": "https://github.com/smile-minecraft/Discord-Bot-AI-#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.8.0",
+    "discord-player": "^5.3.0-dev.2",
+    "discord.js": "^14.0.3",
+    "ffmpeg-static": "^5.0.2",
+    "mongoose": "^6.4.6"
+  }
+}
