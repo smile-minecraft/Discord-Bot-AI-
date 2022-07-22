@@ -31,7 +31,7 @@ module.exports = {
                 .setThumbnail("https://i.imgur.com/0Hti98o.png")
                 .setTimestamp();
 
-                const embed2 = new MessageEmbed()
+                const embed2 = new EmbedBuilder()
                 .setColor(color.red)
                 .setTitle('合作社-伺服器狀態-離線')
                 .setDescription('伺服器有狀況記得回到管理員喔~')
