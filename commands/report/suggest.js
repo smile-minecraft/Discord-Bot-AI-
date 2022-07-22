@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
 require('dotenv').config();
-const { guildId } = process.env;
+const { guildID } = process.env;
 const { SuggestChannel } = require('../../json/config.json');
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
         .setDescription(`真是很棒的建議呢`)
         .setThumbnail('https://i.imgur.com/6ABkZah.png')
         .setTimestamp();
-	    const message = await interaction.client.guilds.cache.get(guildId).channels.cache.get(SuggestChannel).send({ embeds:[embed] });
+	    const message = await interaction.client.guilds.cache.get(guildID).channels.cache.get(SuggestChannel).send({ embeds:[embed] });
         await message.react('🟢');
         await message.react('🔴');
         interaction.reply('已經發送到伺服器建議頻道了');
