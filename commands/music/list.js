@@ -34,7 +34,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(color.lightgreen)
             .setTitle('🎵 | 播放清單')
-            .setDescription(`${tracks.join('\n')}${
+            .setDescription(`${track === null ? '待播清單沒有東西' : tracks.join('\n')}${
                 queue.tracks.length > pageEnd
                     ? `\n...還有${queue.tracks.length - pageEnd} 首歌曲`
                     : ''
