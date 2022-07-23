@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('@discordjs/builders');
 const { guildId,GoodByeChannel } = require('../json/config.json');
 module.exports = {
 	name: 'guildMemberRemove',
@@ -6,7 +6,7 @@ module.exports = {
 	execute(client,member) {
         console.log("偵測到有人離開伺服器:v" + member.user.username);
     try {
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor('#FF0000')
             .setTitle(`${member.user.username}離開了合作社.w.`)
             .setDescription('祝他心想事成')

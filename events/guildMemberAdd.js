@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('@discordjs/builders');
 const { WelcomeChannel,guildId } = require("../json/config.json");
 module.exports = {
 	name: 'guildMemberAdd',
@@ -7,7 +7,7 @@ module.exports = {
         console.log("偵測到有人加入伺服器:v" + member.user.username);
     try {
     member.roles.add('879556011818639412');
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor('#7CFC00')
             .setTitle(`${member.user.username}來到了合作社.w.`)
             .setDescription('歡迎加入，請記得詳讀規則和其他說明')
