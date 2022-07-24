@@ -1,5 +1,9 @@
 const { EmbedBuilder } = require('@discordjs/builders');
-const { WelcomeChannel,guildId } = require("../json/config.json");
+const { WelcomeChannel, WelcomeRole } = require("../json/config.json");
+const { color } = require("../json/util.json");
+require('dotenv').config();
+const { guildID } = process.env;
+
 module.exports = {
 	name: 'guildMemberAdd',
 	once: false,
@@ -8,7 +12,7 @@ module.exports = {
     try {
     member.roles.add('879556011818639412');
         const embed = new EmbedBuilder()
-            .setColor('#7CFC00')
+            .setColor(color.green)
             .setTitle(`${member.user.username}來到了合作社.w.`)
             .setDescription('歡迎加入，請記得詳讀規則和其他說明')
             .addFields(
@@ -17,7 +21,7 @@ module.exports = {
             )
             .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp();
-            client.guilds.cache.get(guildId).channels.cache.get(WelcomeChannel).send({ embeds:[embed] });
+            client.guilds.cache.get(guildID).channels.cache.get(WelcomeChannel).send({ embeds:[embed] });
             }
             catch (e) {
                 console.error(e);
