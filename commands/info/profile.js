@@ -41,7 +41,7 @@ module.exports = {
 		.setColor(color.blue)
 		.setTitle(` ${targetname} 的介紹`)
 		.addFields([
-			{ name: '暱稱', value: `${user.get('user_nickname')}`, inline: false },
+			{ name: '暱稱', value: `${user.get('user_nickname') ? user.get('user_nickname') : targetname}`, inline: false },
 			{ name: '介紹', value: `${user.get('description')}`, inline: false },
 			{ name: '餘額', value: `$${user.get('balance')}` },
 			{ name: '等級', value: `Lv. ${user.get('level')}` },

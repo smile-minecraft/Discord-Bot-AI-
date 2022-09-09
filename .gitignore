@@ -74,6 +74,6 @@ typings/
 
 # FuseBox cache
 .fusebox/
-json/config.json
-secret.env
+
+# DynamoDB Local files
 database.db
