@@ -20,7 +20,7 @@ const { token, guildId } = process.env;
 const fs = require('fs');
 const { color } = require('./json/util.json');
 client.commands = new Collection();
-
+client.modals = new Collection();
 // #region 讀取commands指令
 
 const commandFolders = fs.readdirSync('./commands');
@@ -34,6 +34,16 @@ for (const folder of commandFolders) {
 
 // #endregion
 
+// #region 讀取modal組件
+
+const modalFiles = fs.readdirSync('./modals');
+	for (const file of modalFiles) {
+		const modal = require(`./modals/${file}`);
+		client.modals.set(modal.data.name, modal);
+		console.log(`輸入組件 ${modal.data.name} 載入!`);
+	}
+// #endregion
+
 // #region 音樂系統
 client.player = new Player(client);
 
@@ -43,7 +53,7 @@ for (const file of musicEventFiles) {
 	const event = require(`./music/events/${file}`);
 
 		client.player.on(event.name, (...args) => event.execute(client,...args));
-		console.log('載入事件: ' + event.name);
+		console.log('偵測歌曲播放事件: ' + event.name);
 }
 
 // #endregion
@@ -59,6 +69,7 @@ for (const file of eventFiles) {
  else {
 		client.on(event.name,async (...args) => event.execute(client,...args));
 	}
+	console.log('偵測事件: ' + file);
 }
 // #endregion
 

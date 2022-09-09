@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { help } = require("../../json/config.json");
 const { color } = require('../../json/util.json');
 module.exports = {
+        useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('help')
 		.setDescription('指令的列表以及操作幫助'),
@@ -12,6 +13,6 @@ module.exports = {
         .setDescription(`🔍${help}`)
         .setThumbnail('https://i.imgur.com/voHZ6el.png')
         .setTimestamp();
-	await interaction.reply({ embeds:[embed] });
+	await interaction.editReply({ embeds:[embed] });
 	},
 };

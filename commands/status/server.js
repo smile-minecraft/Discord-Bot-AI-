@@ -3,11 +3,11 @@ const { default: axios } = require('axios');
 const { MessageEmbed } = require('discord.js');
 const { color } = require('../../json/util.json');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('server')
 		.setDescription('伺服器狀態'),
 	async execute(client,interaction) {
-        await interaction.deferReply();
         axios.get("https://api.mcsrvstat.us/2/mbc.fnwl.tk")
             .then(res => { // 這一段是機器人接收回復
                 var players = res.data["players"]["online"];
@@ -23,9 +23,7 @@ module.exports = {
                 .setDescription('伺服器有狀況記得回報管理員喔~')
                 .addFields(
                     { name: '伺服器在線人數', value: `${players}/${maxplayers}` },
-                    { name: '\u200B', value: '\u200B' },
                     { name: '伺服器連線位址', value: `網址:mbc.fnwl.tk\n基岩版連接埠:${port}`, inline: true },
-                    { name: '\u200B', value: '\u200B' },
                     { name: '版本號', value: `${ver}`, inline: true },
                 )
                 .setThumbnail("https://i.imgur.com/0Hti98o.png")

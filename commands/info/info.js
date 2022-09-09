@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const { color } = require('../../json/util.json');
 module.exports = {
+	useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('info')
 		.setDescription('群組的相關資訊'),
@@ -15,6 +16,6 @@ module.exports = {
             .setDescription('伺服器名稱:' + interaction.guild.name + "\n伺服器實際人數:" + mancount)
             .setThumbnail(interaction.guild.iconURL())
             .setTimestamp();
-        await interaction.reply({ embeds:[embed] });
+        await interaction.editReply({ embeds:[embed] });
 	},
 };

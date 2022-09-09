@@ -3,6 +3,7 @@ const { default: axios } = require('axios');
 const { MessageEmbed } = require('discord.js');
 const { countryCode , isp , color } = require('../../json/util.json');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('ip')
 		.setDescription('針對IP位置進行調查')
@@ -12,7 +13,6 @@ module.exports = {
                 .setRequired(true)),
 	async execute(client,interaction) {
         const IP = interaction.options.getString('ip');
-        await interaction.deferReply();
         axios.get(`http://ip-api.com/json/${IP}?fields=22282239`)
             .then(res => { // 這一段是機器人接收回復
                 var status = res.data["status"];

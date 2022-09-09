@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { QueryType } = require('discord-player');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('play')
 		.setDescription('撥放音樂!')
@@ -10,10 +11,10 @@ module.exports = {
                 .setRequired(true)),
 	async execute(client,interaction) {
         if (!interaction.member.voice.channelId) {
-            await interaction.reply({ content: "你不在語音頻道裡!", ephemeral: true });
+            await interaction.editReply({ content: "你不在語音頻道裡!", ephemeral: true });
         }
         if (interaction.guild.members.me.voice.channelId && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
-            await interaction.reply({ content: "你不在我的語音頻道!", ephemeral: true });
+            await interaction.editReply({ content: "你不在我的語音頻道!", ephemeral: true });
         }
         const query = interaction.options.get("搜尋").value;
         const queue = client.player.createQueue(interaction.guild, {
@@ -29,8 +30,6 @@ module.exports = {
             return await interaction.followUp({ content: "我無法加入你的語音頻道!", ephemeral: true });
         }
 
-        await interaction.deferReply();
-
 
         const searchResult = await client.player
         .search(query, {
@@ -45,8 +44,8 @@ module.exports = {
         await interaction.followUp({ content: `🟢 | ${searchResult.playlist ? '播放清單' : '歌曲'} **${searchResult.playlist ? searchResult.tracks[0] + "(合輯)" : searchResult.tracks[0] }** 已加入歌單中!` });
 
         if (!queue.playing) {
-        console.log("撥放音樂");
         queue.play();
+        console.log(`播放: ${searchResult.playlist ? searchResult.tracks[0] + "(合輯)" : searchResult.tracks[0] }`);
         }
 
 	},

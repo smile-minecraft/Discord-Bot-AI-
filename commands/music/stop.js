@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('stop')
 		.setDescription('停止播放'),
@@ -15,6 +16,6 @@ module.exports = {
         .setTitle('🔴 | 已停止播放')
         .setTimestamp()
         .toJSON();
-    await interaction.reply({ embeds:[embed] });
+    await interaction.editReply({ embeds:[embed] });
 	},
 };

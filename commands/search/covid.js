@@ -3,6 +3,7 @@ const { default: axios } = require('axios');
 const { MessageEmbed } = require('discord.js');
 const { color } = require('../../json/util.json');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('covid')
 		.setDescription('台灣疫情資料'),
@@ -24,7 +25,7 @@ module.exports = {
                 )
                 .setThumbnail('https://i.imgur.com/XtHWvQZ.png')
                 .setTimestamp();
-                interaction.reply({ embeds:[embed] });
+                interaction.editReply({ embeds:[embed] });
             });
 	},
 };

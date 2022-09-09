@@ -3,11 +3,11 @@ const { default: axios } = require('axios');
 const { MessageEmbed } = require('discord.js');
 const { color } = require('../../json/util.json');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('name')
 		.setDescription('產生隨機名字'),
 	async execute(client,interaction) {
-        await interaction.deferReply();
         axios.get("https://api.parser.name/?api_key=d5580862f719273f9ded571df5bc8a0a&endpoint=generate&country_code=US")
             .then(res => { // 這一段是機器人接收回復
                 console.log(res["data"]["data"][0]["name"]["firstname"]["name"]);

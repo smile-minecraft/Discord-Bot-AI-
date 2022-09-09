@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
 const { QueueRepeatMode } = require('discord-player');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('list')
 		.setDescription('查看播放清單')
@@ -16,7 +17,7 @@ module.exports = {
         const queue = client.player.getQueue(interaction.guild.id);
 
         if (!queue) {
-            interaction.reply({ content: '❌ | 沒有正在播放的音樂' });
+            interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
         }
         let page;
         if (!interaction.options.getInteger('page')) {
@@ -41,6 +42,6 @@ module.exports = {
             }`)
             .setTimestamp()
             .toJSON();
-        await interaction.reply({ embeds:[embed] });
+        await interaction.editReply({ embeds:[embed] });
 	},
 };

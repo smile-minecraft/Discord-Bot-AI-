@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const { default: axios } = require('axios');
 const { color } = require('../../json/util.json');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('twd')
 		.setDescription('新台幣即時匯率'),
@@ -26,7 +27,7 @@ module.exports = {
                 )
                 .setThumbnail('https://i.imgur.com/DMYXQfr.png')
                 .setTimestamp();
-	        interaction.reply({ embeds:[embed] });
+	        interaction.editReply({ embeds:[embed] });
             });
 	},
 };

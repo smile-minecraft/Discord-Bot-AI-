@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
 module.exports = {
+        useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('pause')
 		.setDescription('暫停音樂'),

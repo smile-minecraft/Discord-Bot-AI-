@@ -2,13 +2,14 @@ const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { QueueRepeatMode } = require('discord-player');
 const { color } = require('../../json/util.json');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('loop')
 		.setDescription('重複播放歌曲')
         .addIntegerOption(option => (
             option.setName('mode')
             .setDescription('重複播放模式')
-            .setRequired(false)
+            .setRequired(true)
             .addChoices(
                 { name: '單曲', value: QueueRepeatMode.TRACK },
                 { name: '列表', value: QueueRepeatMode.QUEUE },
@@ -20,7 +21,7 @@ module.exports = {
         const queue = client.player.getQueue(interaction.guild.id);
 
         if (!queue) {
-            interaction.reply({ content: '❌ | 沒有正在播放的音樂' });
+            interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
             return;
         }
         const loopMode = interaction.options.getInteger('mode');
@@ -33,6 +34,6 @@ module.exports = {
         .setTitle(success ? `${mode} | 更新循環狀態!` : '❌ | 無法更新狀態!')
         .setTimestamp()
         .toJSON();
-        await interaction.reply({ embeds:[embed] });
+        await interaction.editReply({ embeds:[embed] });
 	},
 };

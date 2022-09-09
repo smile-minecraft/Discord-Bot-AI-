@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
 module.exports = {
+        useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('continue')
 		.setDescription('繼續播放'),
@@ -12,6 +13,6 @@ module.exports = {
         .setDescription(`${client.player.getQueue(interaction.guild.id).nowPlaying().title}`)
         .setTimestamp()
         .toJSON();
-	await interaction.reply({ embeds:[embed] });
+	await interaction.editReply({ embeds:[embed] });
 	},
 };

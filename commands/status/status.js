@@ -5,6 +5,7 @@ const { time } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
 
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('status')
 		.setDescription('顯示資料庫、機器人的連接狀態'),

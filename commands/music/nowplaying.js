@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
 const { QueueRepeatMode } = require('discord-player');
 module.exports = {
+    useDefer: true,
 	data: new SlashCommandBuilder()
 		.setName('nowplaying')
 		.setDescription('查看目前正在播放的歌曲'),
@@ -9,7 +10,7 @@ module.exports = {
         const queue = client.player.getQueue(interaction.guild.id);
 
         if (!queue) {
-            interaction.reply({ content: '❌ | 沒有正在播放的音樂' });
+            interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
         }
         const progress = queue.createProgressBar();
         const perc = queue.getPlayerTimestamp();
@@ -27,6 +28,6 @@ module.exports = {
         .setAuthor({ name: queue.current.author, iconURL: queue.current.thumbnail })
         .setImage(queue.current.thumbnail)
         .toJSON();
-	await interaction.reply({ embeds:[embed] });
+	await interaction.editReply({ embeds:[embed] });
 	},
 };
