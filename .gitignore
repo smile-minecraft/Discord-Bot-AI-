@@ -76,3 +76,4 @@ typings/
 .fusebox/
 
 # DynamoDB Local files
+database.db
