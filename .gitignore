@@ -76,3 +76,4 @@ typings/
 .fusebox/
 json/config.json
 secret.env
+database.db

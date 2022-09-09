@@ -8,7 +8,7 @@ const user = db.define('users', {
 		},
         user_nickname: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
 		balance: {
 			type: DataTypes.INTEGER,
