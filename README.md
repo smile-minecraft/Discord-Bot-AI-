@@ -1,6 +1,6 @@
 ## AI 阿姨 - Discord機器人 
 ![](https://img.shields.io/badge/lincense-MIT-blue.svg) 
-![](https://discord.com/api/guilds/867315843519610890/widget.png)](https://discord.gg/NW49YbJjuv)
+![](https://discord.com/api/guilds/867315843519610890/widget.png)(https://discord.gg/NW49YbJjuv)
 
 ### 主要功用
 目前主要作為合作社伺服器的功能性機器人使用
