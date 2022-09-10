@@ -21,6 +21,7 @@ const fs = require('fs');
 const { color } = require('./json/util.json');
 client.commands = new Collection();
 client.modals = new Collection();
+client.buttons = new Collection();
 // #region 讀取commands指令
 
 const commandFolders = fs.readdirSync('./commands');
@@ -41,6 +42,16 @@ const modalFiles = fs.readdirSync('./modals');
 		const modal = require(`./modals/${file}`);
 		client.modals.set(modal.data.name, modal);
 		console.log(`輸入組件 ${modal.data.name} 載入!`);
+	}
+// #endregion
+
+// #region 讀取按鈕組件
+
+const buttonFiles = fs.readdirSync('./buttons');
+	for (const file of buttonFiles) {
+		const button = require(`./buttons/${file}`);
+		client.buttons.set(button.data.name, button);
+		console.log(`按鈕組件 ${button.data.name} 載入!`);
 	}
 // #endregion
 

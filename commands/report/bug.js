@@ -8,28 +8,28 @@ const { ReportChannel } = require('../../json/config.json');
 module.exports = {
     useDefer: false,
 	data: new SlashCommandBuilder()
-		.setName('report')
-		.setDescription('舉報玩家/糾紛案件'),
+		.setName('bug')
+		.setDescription('回報遊戲BUG/漏洞'),
 
 	async execute(client,interaction) {
         const modal = new ModalBuilder()
-			    .setCustomId('report')
-			    .setTitle('舉報玩家/糾紛案件');
+			    .setCustomId('bug')
+			    .setTitle('回報遊戲BUG/漏洞');
 
             const titleInput = new TextInputBuilder()
 			    .setCustomId('titleInput')
-			    .setLabel("舉報的標題")
+			    .setLabel("回報漏洞的標題")
 			    .setStyle(TextInputStyle.Short)
-                .setPlaceholder("請輸入舉報的標題")
+                .setPlaceholder("請輸入回報漏洞的標題")
                 .setRequired(true)
                 .setMaxLength(20);
 
 
 		    const descriptionInput = new TextInputBuilder()
 			    .setCustomId('descriptionInput')
-			    .setLabel("舉報的內容")
+			    .setLabel("回報漏洞的內容")
 			    .setStyle(TextInputStyle.Paragraph)
-                .setPlaceholder("請輸入舉報的內容")
+                .setPlaceholder("請輸入回報漏洞的內容")
                 .setRequired(true)
                 .setMaxLength(1000);
 

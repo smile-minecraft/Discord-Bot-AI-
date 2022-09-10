@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('@discordjs/builders');
+const { ButtonStyle } = require('discord.js');
 const { color } = require('../../json/util.json');
 const { QueueRepeatMode } = require('discord-player');
 module.exports = {
@@ -15,6 +16,19 @@ module.exports = {
         const progress = queue.createProgressBar();
         const perc = queue.getPlayerTimestamp();
         const view = queue.current.views;
+
+        const row = new ActionRowBuilder()
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId('list')
+					.setLabel('播放列表')
+					.setStyle(ButtonStyle.Primary),
+                new ButtonBuilder()
+                    .setCustomId('pause')
+                    .setLabel('暫停')
+                    .setStyle(ButtonStyle.Success),
+			);
+
         const embed = new EmbedBuilder()
         .setColor(color.lightnavy)
         .setTitle('正在播放:')
@@ -28,6 +42,6 @@ module.exports = {
         .setAuthor({ name: queue.current.author, iconURL: queue.current.thumbnail })
         .setImage(queue.current.thumbnail)
         .toJSON();
-	await interaction.editReply({ embeds:[embed] });
+	await interaction.editReply({ embeds:[embed] , components: [row] });
 	},
 };
