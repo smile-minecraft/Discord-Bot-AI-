@@ -3,7 +3,10 @@
     "GoodByeChannel":"879630102642692096",
     "SuggestChannel":"911841280940703785",
     "ReportChannel":"887571321226149898",
+    "SupportChannel":"支援 頻道ID",
     "WelcomeRole" : "879556011818639412",
+    "AdminRole" : "879556011818639412",
+
     "help" : "\n/hi 讓機器人打招呼\n/server 查看伺服器相關狀態\n/user 查看自己的個人資訊\n\n**機器人相關**\n/ping 機器人的ping值\n/ver 機器人的版本",
-    "ver":"1.3.0"
+    "ver":"1.4.0"
 }
