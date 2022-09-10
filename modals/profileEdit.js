@@ -6,7 +6,7 @@ module.exports = {
 	async execute(client,interaction) {
         const nickname = interaction.fields.getTextInputValue('nicknameInput');
 	const description = interaction.fields.getTextInputValue('descriptionInput');
-        const id = interaction.user.id;
+        const id = interaction.member.id;
 
         const [user, created] = await User.findOrCreate({
                 where: { user_id: id },
@@ -21,6 +21,7 @@ module.exports = {
                         user.description = description;
                         await user.save();
                           }
+        await User.update({ description: description, user_nickname: nickname }, { where: { user_id: id } });
         await interaction.reply({ content: '個人資訊已更新', ephemeral: true });
 	},
 };

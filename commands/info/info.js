@@ -7,9 +7,8 @@ module.exports = {
 		.setName('info')
 		.setDescription('群組的相關資訊'),
 	async execute(client, interaction) {
-		var botcount = interaction.guild.members.cache.filter(m => m.user.bot).size;
 		var membercount = interaction.guild.memberCount;
-		var mancount = membercount - botcount;
+		var mancount = membercount - 11;
 		const embed = new EmbedBuilder()
 			.setColor(color.pink)
 			.setTitle('伺服器相關資訊')
