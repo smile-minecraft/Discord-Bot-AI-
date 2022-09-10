@@ -1,4 +1,4 @@
-## AI 阿姨 - Discord機器人 ![](https://img.shields.io/badge/lincense-MIT-blue)
+## AI 阿姨 - Discord機器人 https://img.shields.io/badge/lincense-MIT-blue
 
 ### 主要功用
 目前主要作為合作社伺服器的功能性機器人使用
