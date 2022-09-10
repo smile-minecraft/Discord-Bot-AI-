@@ -20,6 +20,22 @@
 1. 將原代碼解壓縮後，先利用npm 安裝需要的模組:
 ```npm i 模組名稱```
 
+所需模組:
+```
+discord.js
+fs 
+axios 
+@discordjs/rest 
+discord-api-types 
+discordjs/voice 
+@discordjs/opus  
+discord-player 
+libsodium-wrappers 
+dotenv 
+sequelize 
+sqlite3
+```
+
 2. 將`config_example.json`改為`config.json`，並填寫配置
 ```json
 {
