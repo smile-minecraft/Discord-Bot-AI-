@@ -35,10 +35,10 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(color.lightgreen)
             .setTitle('🎵 | 播放清單')
-            .setDescription(`${tracks === null ? '待播清單沒有東西' : tracks.join('\n')}${
+            .setDescription(`${tracks === '' ? '待播清單沒有東西' : tracks.join('\n')}${
                 queue.tracks.length > pageEnd
                     ? `\n...還有${queue.tracks.length - pageEnd} 首歌曲`
-                    : ''
+                    : '沒有更多歌曲了'
             }`)
             .setTimestamp()
             .toJSON();
