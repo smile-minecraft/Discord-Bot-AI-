@@ -8,7 +8,7 @@ module.exports = {
 	name: 'guildMemberRemove',
 	once: false,
 	execute(client,member) {
-        console.log("偵測到有人離開伺服器:v" + member.user.username);
+        console.log("偵測到有人離開伺服器 - " + member.user.username);
     try {
         const embed = new EmbedBuilder()
             .setColor(color.red)

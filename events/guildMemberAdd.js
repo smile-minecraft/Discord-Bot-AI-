@@ -8,7 +8,7 @@ module.exports = {
 	name: 'guildMemberAdd',
 	once: false,
 	execute(client,member) {
-        console.log("偵測到有人加入伺服器:v" + member.user.username);
+        console.log("偵測到有人加入伺服器 - " + member.user.username);
     try {
     member.roles.add('879556011818639412');
         const embed = new EmbedBuilder()
