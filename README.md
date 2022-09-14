@@ -51,7 +51,16 @@ sqlite3
     "ver":"1.4.0"
 }
 ```
-3. 在終端機中運行
+
+3. 配置`.env.example`，裡面包含較重要的數據，修改後將`.env.example`改為`.env`
+```
+token=機器人的 Token
+clientID=機器人App的 client ID
+guildID=群組的ID
+```
+
+
+4. 在終端機中運行
 ```node index.js```
 
 

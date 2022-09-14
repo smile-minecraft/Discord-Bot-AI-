@@ -13,7 +13,12 @@ module.exports = {
      * @param {import('discord.js').ModalSubmitInteraction} interaction
      */
 	async execute(client,interaction) {
+        const queue = client.player.getQueue(interaction.guild.id);
         client.player.getQueue(interaction.guild.id).setPaused(false);
+        if (!queue) {
+                interaction.reply({ content: '❌ | 沒有正在播放的音樂' });
+                return;
+            }
         const embed = new EmbedBuilder()
         .setColor(color.lightgreen)
         .setTitle('🟢 | 已繼續播放歌曲')

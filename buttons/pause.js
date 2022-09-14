@@ -13,6 +13,12 @@ module.exports = {
      * @param {import('discord.js').ModalSubmitInteraction} interaction
      */
 	async execute(client,interaction) {
+        const queue = client.player.getQueue(interaction.guild.id);
+
+        if (!queue) {
+            interaction.reply({ content: '❌ | 沒有正在播放的音樂' });
+            return;
+        }
         client.player.getQueue(interaction.guild.id).setPaused(true);
 
         const row = new ActionRowBuilder()

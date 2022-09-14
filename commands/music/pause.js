@@ -6,7 +6,13 @@ module.exports = {
 		.setName('pause')
 		.setDescription('暫停音樂'),
 	async execute(client,interaction) {
-        client.player.getQueue(interaction.guild.id).setPaused(true);
+                const queue = client.player.getQueue(interaction.guild.id);
+
+                if (!queue) {
+                    interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
+                    return;
+                }
+        queue.setPaused(true);
         const embed = new EmbedBuilder()
         .setColor(color.lightyellow)
         .setTitle('🟡 | 已暫停歌曲')
