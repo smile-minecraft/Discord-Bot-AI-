@@ -8,39 +8,38 @@ module.exports = {
 		.setName('server')
 		.setDescription('伺服器狀態'),
 	async execute(client,interaction) {
-        axios.get("https://api.mcsrvstat.us/2/mbc.fnwl.tk")
-            .then(res => { // 這一段是機器人接收回復
-                var players = res.data["players"]["online"];
-                var maxplayers = res.data["players"]["max"];
-                var ip = res.data["ip"];
-                var ver = res.data["version"];
-                var port = res.data["port"];
-                var protocol = res.data["protacol"];
-                var online = res.data["online"];
-                const embed1 = new EmbedBuilder()
+
+        (async () => { // 異步函數
+            let mbc = {};
+            let heyNight = {};
+
+            async function status() {
+                const url = `https://api.mcsrvstat.us/2/mbc.fnwl.tk`;
+                const response = await axios.get(url);
+                mbc = response.data;
+                const url2 = `https://api.mcsrvstat.us/2/heynight.tk`;
+                const response2 = await axios.get(url2);
+                heyNight = response2.data;
+              }
+            await status();
+
+            const embed = new EmbedBuilder()
                 .setColor(color.green)
                 .setTitle('合作社-伺服器狀態')
-                .setDescription('伺服器有狀況記得回報管理員喔~')
+                .setDescription(`主分流/副分流 ${mbc.online ? '🟢' : '🔴'}\n三分流 ${heyNight.online ? '🟢' : '🔴'}`)
                 .addFields(
-                    { name: '伺服器在線人數', value: `${players}/${maxplayers}` },
-                    { name: '伺服器連線位址', value: `網址:mbc.fnwl.tk\n基岩版連接埠:${port}`, inline: true },
-                    { name: '版本號', value: `${ver}`, inline: true },
+                    { name: '伺服器總人數', value: `${mbc.players.online + heyNight.players.online}/${mbc.players.max + heyNight.players.max}` },
+                    { name: '伺服器IP位址', value: `mbc.fnwl.tk`, inline: true },
+                    { name: '連接埠', value: `25600`, inline: true },
                 )
                 .setThumbnail("https://i.imgur.com/0Hti98o.png")
                 .setTimestamp();
-
-                const embed2 = new EmbedBuilder()
-                .setColor(color.red)
-                .setTitle('合作社-伺服器狀態-離線')
-                .setDescription('伺服器有狀況記得回到管理員喔~')
-                .setThumbnail("https://i.imgur.com/azwL1JE.png")
-                .setTimestamp();
-            if (online) {
-                interaction.editReply({ embeds:[embed1] });
-            }
-            else {
-                interaction.editReply({ embeds:[embed2] });
-            }
-            });
+                try {
+                    await interaction.editReply({ embeds:[embed] });
+                }
+                catch (error) {
+                    console.log(error);
+                }
+          })();
 	},
 };
