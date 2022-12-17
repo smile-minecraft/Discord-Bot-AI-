@@ -1,0 +1,63 @@
+{
+    "message":{
+
+        "command":{
+
+            "admin":{
+
+            },
+
+            "economy":{
+
+            },
+
+            "info":{
+                "help":{
+                    "title":"機器人幫助頁面"
+                }
+                
+
+                }
+            },
+
+            "music":{
+
+            },
+            
+            "report":{
+
+            },
+
+            "search":{
+
+            },
+
+            "status":{
+
+            }
+
+        },
+
+        "event":{
+    
+        },
+
+        "button":{
+    
+        },
+
+        "menu":
+        {
+            
+        },
+
+        "modal":{
+    
+        },
+
+        "music":{
+            
+        }
+
+    }
+    
