@@ -1,4 +1,4 @@
-const User = require('../database/models/user.js');
+const User = require('../../database/models/user.js');
 module.exports = {
 	data: {
         name: 'colorEdit',

@@ -1,8 +1,8 @@
-const Bug = require('../database/models/bug.js');
-const { color } = require('../json/util.json');
+const Bug = require('../../database/models/bug.js');
+const { color } = require('../../json/util.json');
 require('dotenv').config();
 const { guildID } = process.env;
-const { BugChannel } = require('../json/config.json');
+const { BugChannel } = require('../../json/config.json');
 const { EmbedBuilder } = require('discord.js');
 
 

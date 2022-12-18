@@ -1,4 +1,4 @@
-const { color } = require('../json/util.json');
+const { color } = require('../../json/util.json');
 require('dotenv').config();
 const { guildID } = process.env;
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');

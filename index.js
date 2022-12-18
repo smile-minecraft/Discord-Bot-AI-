@@ -37,9 +37,9 @@ for (const folder of commandFolders) {
 
 // #region 讀取modal組件
 
-const modalFiles = fs.readdirSync('./modals');
+const modalFiles = fs.readdirSync('./interactions/modals');
 	for (const file of modalFiles) {
-		const modal = require(`./modals/${file}`);
+		const modal = require(`./interactions/modals/${file}`);
 		client.modals.set(modal.data.name, modal);
 		console.log(`輸入組件 ${modal.data.name} 載入!`);
 	}
@@ -47,9 +47,9 @@ const modalFiles = fs.readdirSync('./modals');
 
 // #region 讀取按鈕組件
 
-const buttonFiles = fs.readdirSync('./buttons');
+const buttonFiles = fs.readdirSync('./interactions/buttons');
 	for (const file of buttonFiles) {
-		const button = require(`./buttons/${file}`);
+		const button = require(`./interactions/buttons/${file}`);
 		client.buttons.set(button.data.name, button);
 		console.log(`按鈕組件 ${button.data.name} 載入!`);
 	}

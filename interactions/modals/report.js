@@ -1,14 +1,14 @@
-const Suggest = require('../database/models/suggest.js');
-const { color } = require('../json/util.json');
+const Report = require('../../database/models/report.js');
+const { color } = require('../../json/util.json');
 require('dotenv').config();
 const { guildID } = process.env;
-const { SuggestChannel } = require('../json/config.json');
+const { ReportChannel } = require('../../json/config.json');
 const { EmbedBuilder } = require('discord.js');
 
 
 module.exports = {
 	data: {
-        name: 'suggest',
+        name: 'report',
     },
     /**
      *  @param {import('discord.js').Client} client
@@ -21,36 +21,33 @@ module.exports = {
         const id = interaction.member.id;
         interaction.deferReply();
 
-        const suggest = await Suggest.create({
+        const report = await Report.create({
                 user_id: id,
-                suggest_title: title,
-                suggest_description: description,
+                report_reason: description,
         });
-        await suggest.save();
+        await report.save();
 
         const embed = new EmbedBuilder()
         .setColor(color.yellow)
-        .setTitle(`建議 #${suggest.get('suggest_id')}`)
+        .setTitle(`舉報 #${report.get('report_id')}`)
         .addFields([
             { name: '標題', value: title },
             { name: '內容', value: description },
-            { name: '建議人', value: `<@${interaction.user.id}>` },
+            { name: '舉報者', value: `<@${interaction.user.id}>` },
         ])
-        .setThumbnail('https://i.imgur.com/6ABkZah.png')
+        .setThumbnail('https://i.imgur.com/90oJpmR.png')
         .setTimestamp()
         .toJSON();
 
-	    const message = await interaction.client.guilds.cache.get(guildID).channels.cache.get(SuggestChannel).send({ embeds:[embed] });
-        await message.react('🟢');
-        await message.react('🔴');
-        const thread = await interaction.client.guilds.cache.get(guildID).channels.cache.get(SuggestChannel).threads.create({
-            name: `建議 - ${suggest.get('suggest_id')}`,
+	    const message = await interaction.client.guilds.cache.get(guildID).channels.cache.get(ReportChannel).send({ embeds:[embed] });
+        const thread = await interaction.client.guilds.cache.get(guildID).channels.cache.get(ReportChannel).threads.create({
+            name: `舉報 - ${report.get('report_id')}`,
             autoArchiveDuration: 60,
             reason: `${title}`,
         });
         console.log(`創建討論串: ${thread.name}`);
         await thread.members.add(id);
 
-        await interaction.editReply({ content: '已送出建議🟢', ephemeral: true });
+        await interaction.editReply({ content: '已送出舉報🟢', ephemeral: true });
 	},
 };
