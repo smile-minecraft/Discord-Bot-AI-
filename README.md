@@ -29,7 +29,7 @@ axios
 discord-api-types 
 discordjs/voice 
 @discordjs/opus  
-discord-player 
+distube
 libsodium-wrappers 
 dotenv 
 sequelize 
