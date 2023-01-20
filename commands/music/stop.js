@@ -7,10 +7,10 @@ module.exports = {
 		.setDescription('停止播放'),
 	async execute(client,interaction) {
         const queue = client.player.getQueue(interaction.guild.id);
-        if (!queue) {
-            interaction.reply({ content: '❌ | 沒有正在播放的音樂' });
+        if (!queue || !queue.playing) {
+            return interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
         }
-        queue.destroy();
+        queue.stop();
         const embed = new EmbedBuilder()
         .setColor(color.lightred)
         .setTitle('🔴 | 已停止播放')

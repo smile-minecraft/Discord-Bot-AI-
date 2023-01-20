@@ -1,4 +1,8 @@
 const { InteractionType } = require('discord.js');
+const discordConsole = require('../utils/console/discordConsole.js');
+const logger = require('../utils/console/logger.js');
+const { color } = require('../json/util.json');
+
 module.exports = {
 	name: 'interactionCreate',
 	once: false,
@@ -16,8 +20,9 @@ module.exports = {
 		await modal.execute(client,interaction);
 	}
 	catch (error) {
-		console.error(error);
-		await interaction.member.send({ content: '執行組件發生錯誤❌', ephemeral: true });
+		logger.error(error);
+		discordConsole.send(client,`執行模組發生錯誤❌`,error,color.red);
+		await interaction.channel.send({ content: '執行組件發生錯誤❌', ephemeral: true });
 	}
 
 	},

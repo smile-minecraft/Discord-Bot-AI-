@@ -1,6 +1,8 @@
+const logger = require('../utils/console/logger.js');
 const { EmbedBuilder } = require('@discordjs/builders');
 const { WelcomeChannel, WelcomeRole } = require("../json/config.json");
 const { color } = require("../json/util.json");
+const discordConsole = require('../utils/console/discordConsole.js');
 require('dotenv').config();
 const { guildID } = process.env;
 
@@ -8,9 +10,9 @@ module.exports = {
 	name: 'guildMemberAdd',
 	once: false,
 	execute(client,member) {
-        console.log("偵測到有人加入伺服器 - " + member.user.username);
+        logger.join("偵測到有人加入伺服器 - " + member.user.username);
     try {
-    member.roles.add('879556011818639412');
+    member.roles.add(WelcomeRole);
         const embed = new EmbedBuilder()
             .setColor(color.green)
             .setTitle(`${member.user.username}來到了合作社.w.`)
@@ -22,9 +24,10 @@ module.exports = {
             .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp();
             client.guilds.cache.get(guildID).channels.cache.get(WelcomeChannel).send({ embeds:[embed] });
+            discordConsole.send(client,embed);
             }
             catch (e) {
-                console.error(e);
+                logger.error(e);
             }
 	},
 };

@@ -3,15 +3,19 @@ const user = require('../database/models/user.js');
 const report = require('../database/models/report.js');
 const bug = require('../database/models/bug.js');
 const suggest = require('../database/models/suggest.js');
+const logger = require('../utils/console/logger.js');
+const discordConsole = require('../utils/console/discordConsole.js');
+const { color } = require('../json/util.json');
+
 module.exports = {
 	name: 'ready',
 	once: true,
 	execute(client) {
 		require('../deploy-commands');
-        console.log(` ${client.user.tag}已登入!`);
+        logger.info(` ${client.user.tag}已登入!`);
 		db.authenticate()
         .then(() => {
-            console.log('資料庫登入成功!');
+            logger.info('資料庫登入成功!');
         })
         .catch(err => console.log(err));
 		user.sync();
@@ -19,6 +23,6 @@ module.exports = {
 		bug.sync();
 		suggest.sync();
 
-		console.log('模型同步完成');
+		logger.info('模型同步完成');
 	},
 };

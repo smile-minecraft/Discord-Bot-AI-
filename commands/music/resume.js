@@ -13,7 +13,7 @@ module.exports = {
                 return;
         }
 
-        client.player.getQueue(interaction.guild.id).setPaused(false);
+        client.player.getQueue(interaction.guild.id).resume();
         const embed = new EmbedBuilder()
         .setColor(color.lightgreen)
         .setTitle('🟢 | 繼續播放歌曲')

@@ -15,11 +15,11 @@ module.exports = {
 	async execute(client,interaction) {
         const queue = client.player.getQueue(interaction.guild.id);
 
-        if (!queue) {
-            interaction.reply({ content: '❌ | 沒有正在播放的音樂' });
-            return;
-        }
-        client.player.getQueue(interaction.guild.id).setPaused(true);
+        if (!queue || !queue.playing) {
+                    interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
+                    return;
+                }
+        queue.pause();
 
         const row = new ActionRowBuilder()
 			.addComponents(
@@ -29,12 +29,12 @@ module.exports = {
 					.setStyle(ButtonStyle.Primary),
 			);
 
-        const embed = new EmbedBuilder()
-        .setColor(color.lightyellow)
-        .setTitle('🟡 | 已暫停歌曲')
-        .setDescription(`${client.player.getQueue(interaction.guild.id).nowPlaying().title}`)
-        .setTimestamp()
-        .toJSON();
+            const embed = new EmbedBuilder()
+            .setColor(color.lightyellow)
+            .setTitle('🟡 | 已暫停歌曲')
+            .setDescription(`${client.player.getQueue(interaction.guild.id).songs[0].name}`)
+            .setTimestamp()
+            .toJSON();
 	    await interaction.reply({ embeds:[embed], components:[row] });
 
 	},

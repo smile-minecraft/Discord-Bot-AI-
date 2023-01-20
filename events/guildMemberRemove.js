@@ -3,12 +3,14 @@ const { GoodByeChannel } = require('../json/config.json');
 require('dotenv').config();
 const { guildID } = process.env;
 const { color } = require('../json/util.json');
+const discordConsole = require('../utils/console/discordConsole');
+const logger = require('../utils/console/logger.js');
 
 module.exports = {
 	name: 'guildMemberRemove',
 	once: false,
 	execute(client,member) {
-        console.log("偵測到有人離開伺服器 - " + member.user.username);
+        logger.leave("偵測到有人離開伺服器 - " + member.user.username);
     try {
         const embed = new EmbedBuilder()
             .setColor(color.red)
@@ -17,9 +19,10 @@ module.exports = {
             .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp();
             client.guilds.cache.get(guildID).channels.cache.get(GoodByeChannel).send({ embeds:[embed] });
+            discordConsole.send(client,embed);
     }
     catch (e) {
-        console.error(e);
+        logger.error(e);
     }
 	},
 };

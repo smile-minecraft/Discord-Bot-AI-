@@ -7,8 +7,9 @@ module.exports = {
 		.setDescription('跳過歌曲'),
 	async execute(client,interaction) {
         const queue = client.player.getQueue(interaction.guild.id);
-        if (!queue) {
+        if (!queue || !queue.playing) {
             interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
+            return;
         }
         else {
             queue.skip();

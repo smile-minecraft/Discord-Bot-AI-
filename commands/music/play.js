@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { QueryType } = require('discord-player');
 module.exports = {
     useDefer: true,
 	data: new SlashCommandBuilder()
@@ -9,6 +8,12 @@ module.exports = {
             option.setName('搜尋')
                 .setDescription('你想要聽的內容')
                 .setRequired(true)),
+
+    /**
+	 * @param {import('discord.js').Interaction} interaction
+	 * @param {import('discord.js').Client} client
+	 */
+
 	async execute(client,interaction) {
         if (!interaction.member.voice.channelId) {
             await interaction.editReply({ content: "你不在語音頻道裡!", ephemeral: true });
@@ -17,35 +22,17 @@ module.exports = {
             await interaction.editReply({ content: "你不在我的語音頻道!", ephemeral: true });
         }
         const query = interaction.options.get("搜尋").value;
-        const queue = client.player.createQueue(interaction.guild, {
-            metadata: {
-                channel: interaction.channel,
-            },
-        });
         try {
-            if (!queue.connection) await queue.connect(interaction.member.voice.channel);
+            await client.player.play(interaction.member.voice.channel, query, {
+                member: interaction.member,
+                textChannel: interaction.channel,
+                interaction,
+              });
+              await interaction.editReply({ content: `🟢 **| 歌曲已加入歌單中!**` });
         }
-        catch {
-            queue.destroy();
-            return await interaction.followUp({ content: "我無法加入你的語音頻道!", ephemeral: true });
-        }
-
-
-        const searchResult = await client.player
-        .search(query, {
-            requestedBy: interaction.user,
-            searchEngine: QueryType.AUTO,
-        });
-
-        if (!searchResult) return await interaction.followUp({ content: `❌ | 找不到 **${query}** 的搜尋結果!` });
-
-        searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
-
-        await interaction.followUp({ content: `🟢 | ${searchResult.playlist ? '播放清單' : '歌曲'} **${searchResult.playlist ? searchResult.tracks[0] + "(合輯)" : searchResult.tracks[0] }** 已加入歌單中!` });
-
-        if (!queue.playing) {
-        queue.play();
-        console.log(`播放: ${searchResult.playlist ? searchResult.tracks[0] + "(合輯)" : searchResult.tracks[0] }`);
+        catch (error) {
+            console.error(error);
+            await interaction.editReply({ content: "❌ | 發生錯誤", ephemeral: true });
         }
 
 	},

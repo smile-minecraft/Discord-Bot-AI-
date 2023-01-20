@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { color } = require('../../json/util.json');
-const { name } = require('../../music/events/trackStart');
 module.exports = {
     useDefer: true,
 	data: new SlashCommandBuilder()
@@ -15,7 +14,7 @@ module.exports = {
         ,
 	async execute(client,interaction) {
         const queue = client.player.getQueue(interaction.guild.id);
-        if (!queue) {
+        if (!queue || !queue.playing) {
             interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
         }
         const vol = parseInt(interaction.options.getInteger('volume'));

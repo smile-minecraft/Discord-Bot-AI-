@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
-const { QueueRepeatMode } = require('discord-player');
 const { color } = require('../../json/util.json');
 module.exports = {
     useDefer: true,
@@ -11,16 +10,15 @@ module.exports = {
             .setDescription('重複播放模式')
             .setRequired(true)
             .addChoices(
-                { name: '單曲', value: QueueRepeatMode.TRACK },
-                { name: '列表', value: QueueRepeatMode.QUEUE },
-                { name: '自動播放', value: QueueRepeatMode.AUTOPLAY },
-                { name: '關閉', value: QueueRepeatMode.OFF },
+                { name: '單曲循環', value: 1 },
+                { name: '列表循環', value: 2 },
+                { name: '關閉', value: 0 },
             )
         )),
 	async execute(client,interaction) {
         const queue = client.player.getQueue(interaction.guild.id);
 
-        if (!queue) {
+        if (!queue || !queue.playing) {
             interaction.editReply({ content: '❌ | 沒有正在播放的音樂' });
             return;
         }
@@ -28,7 +26,7 @@ module.exports = {
 
         const success = queue.setRepeatMode(loopMode);
 
-        const mode = loopMode === QueueRepeatMode.TRACK ? '🔂' : loopMode === QueueRepeatMode.QUEUE ? '🔁' : '▶';
+        const mode = loopMode === 1 ? '🔂' : loopMode === 2 ? '🔁' : '▶';
         const embed = new EmbedBuilder()
         .setColor(color.lightgreen)
         .setTitle(success ? `${mode} | 更新循環狀態!` : '❌ | 無法更新狀態!')

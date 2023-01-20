@@ -1,3 +1,6 @@
+const logger = require('../utils/console/logger.js');
+const discordConsole = require('../utils/console/discordConsole.js');
+const { color } = require('../json/util.json');
 module.exports = {
 	name: 'interactionCreate',
 	once: false,
@@ -18,7 +21,8 @@ module.exports = {
 		await command.execute(client,interaction);
 	}
 	catch (error) {
-		console.error(error);
+		logger.error(error);
+		discordConsole.send(client,`執行指令發生錯誤`,error,color.red);
 		if (command.useDefer) {
 			await interaction.editReply({ content: '❌ | 發生錯誤' });
 		}
