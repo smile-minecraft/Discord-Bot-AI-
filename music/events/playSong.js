@@ -9,6 +9,7 @@ module.exports = {
         .setColor(color.green)
         .setTitle('播放歌曲')
         .setDescription(`播放 \`${song.name}\` - \`${song.formattedDuration}\`\n點歌的人: ${song.user}`)
+		.setThumbnail(song.thumbnail)
         .setTimestamp();
         queue.textChannel.send(
 			{ embeds:[embed] },
