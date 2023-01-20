@@ -29,7 +29,7 @@ axios
 discord-api-types 
 discordjs/voice 
 @discordjs/opus  
-discord-player 
+distube
 libsodium-wrappers 
 dotenv 
 sequelize 
@@ -44,6 +44,7 @@ sqlite3
     "SuggestChannel":"建議 頻道ID",
     "ReportChannel":"舉報 頻道ID",
     "SupportChannel":"支援 頻道ID",
+    "logChannel":"紀錄 頻道ID",
     "WelcomeRole" : "新加入成員 身分組ID",
     "AdminRole" : "管理員 身分組ID",
 
