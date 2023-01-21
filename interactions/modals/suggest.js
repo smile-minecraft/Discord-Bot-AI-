@@ -4,6 +4,7 @@ require('dotenv').config();
 const { guildID } = process.env;
 const { SuggestChannel } = require('../../json/config.json');
 const { EmbedBuilder } = require('discord.js');
+const logger = require('../../utils/console/logger.js');
 
 
 module.exports = {
@@ -48,7 +49,7 @@ module.exports = {
             autoArchiveDuration: 60,
             reason: `${title}`,
         });
-        console.log(`創建討論串: ${thread.name}`);
+        logger.info(`創建討論串: ${thread.name}`);
         await thread.members.add(id);
 
         await interaction.editReply({ content: '已送出建議🟢', ephemeral: true });

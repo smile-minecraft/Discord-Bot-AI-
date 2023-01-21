@@ -17,7 +17,7 @@ module.exports = {
         .then(() => {
             logger.info('資料庫登入成功!');
         })
-        .catch(err => console.log(err));
+        .catch(err => logger.error(err));
 		user.sync();
 		report.sync();
 		bug.sync();

@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('@discordjs/builders');
 const { default: axios } = require('axios');
 const { MessageEmbed } = require('discord.js');
 const { color } = require('../../json/util.json');
+const logger = require('../../utils/console/logger');
 module.exports = {
     useDefer: true,
 	data: new SlashCommandBuilder()
@@ -38,7 +39,7 @@ module.exports = {
                     await interaction.editReply({ embeds:[embed] });
                 }
                 catch (error) {
-                    console.log(error);
+                    logger.error(error);
                 }
           })();
 	},

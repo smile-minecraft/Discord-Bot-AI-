@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder,ActionRowBuilder, ModalBuilder, TextIn
 const { TextInputStyle } = require('discord.js');
 const { MessageEmbed } = require('discord.js');
 const { color } = require('../../json/util.json');
+const logger = require('../../utils/console/logger.js');
 
 module.exports = {
     useDefer: false,
@@ -77,7 +78,7 @@ try {
         }
     }
  catch (error) {
-        console.log(error);
+        logger.error(error);
     }
     },
 };

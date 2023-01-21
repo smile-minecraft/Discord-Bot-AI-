@@ -10,7 +10,7 @@ module.exports = {
 	async execute(client,interaction) {
         axios.get("https://api.parser.name/?api_key=d5580862f719273f9ded571df5bc8a0a&endpoint=generate&country_code=US")
             .then(res => { // 這一段是機器人接收回復
-                console.log(res["data"]["data"][0]["name"]["firstname"]["name"]);
+
                 const name = res["data"]["data"][0]["name"]["firstname"]["name"] + " " + res["data"]["data"][0]["name"]["lastname"]["name"];
                 const embed1 = new EmbedBuilder()
                 .setColor(res["data"]["data"][0]["name"]["firstname"]["gender"] == "m" ? color.lightblue : color.pink)
