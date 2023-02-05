@@ -80,3 +80,6 @@ database.db
 
 # config files
 config.json
+
+# server data
+server.json
