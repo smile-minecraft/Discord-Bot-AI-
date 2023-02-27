@@ -26,7 +26,7 @@
     "distube": "^4.0.4",
     "ffmpeg-static": "^5.0.2",
     "mongoose": "^6.4.6",
-    "sequelize": "^6.21.6",
+    "sequelize": "^6.29.0",
     "sqlite3": "^5.0.11",
     "ytdl-core": "^4.11.2"
   }
